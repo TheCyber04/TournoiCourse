@@ -7,20 +7,23 @@
 </head>
 <body>
   <?php 
-  $tentative=0;
+  
 //Récupération des données
 $mAil=$_REQUEST["email"];
 $mdP=$_REQUEST["mot_de_passe"];
 
-  //Connexion au serveur  de la base de données test
+  //Connexion au serveur  de la base de données 
   $nomServeur="localhost";
   $user="root";
   $motPasse="";
   $nomBase="projet";
   $connexion=mysqli_connect($nomServeur,$user,$motPasse,$nomBase);
+//$connexion est un objet de la classe mysqli_connect
+//mysqli_connect renvoie un objet  
 
   //Contrôle de la connexion
-if($connexion->connect_error){
+if($connexion->connect_error){ // "->" permet d'accéder aux propriétés d'un objet connect_error stocke  un message d'erreur
+                              // à préciser avec la fonction die 
     die("Erreur lors de la connexion à la base de données".$connexion->connect_error);
 }
 
@@ -28,10 +31,11 @@ else{
     //Contrôle de saisie
 
     $requEte= "SELECT email,password FROM athelete WHERE email =? AND password=? ";
+    // le "?" représente une valeur qui va être précisée plus tard 
     $stmt = $connexion->prepare($requEte); //Requête préparée pour plus de sécurité
 
-$stmt->bind_param("ss",$mAil,$mdP); //exécution de la requête 
-$stmt->execute(); 
+$stmt->bind_param("ss",$mAil,$mdP); //fournissage des valeurs de email et password  de la requête 
+$stmt->execute(); //exécution 
 $result = $stmt->get_result(); 
 $row=$result->fetch_row();
 
@@ -68,7 +72,9 @@ FROM athelete a WHERE email ='$mAil' AND password='$mdP'";
 
 
  else{
- // $tentative=$tentative+1;
+     session_start();
+     $_SESSION['mail']=$mAil;
+         $_SESSION['mdp']=$mdP;
  
   header("Location:index.html"); 
 
