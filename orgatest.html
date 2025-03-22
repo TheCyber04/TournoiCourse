@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisateur - Course à Pied</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .dashboard .card {
+            background: #fff;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .manage-courses {
+            background: white;
+            padding: 20px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background: #218838;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Tableau de Bord de l'Organisateur
+    </header>
+
+    <div class="container">
+        
+        <!-- Section Tableau de Bord -->
+        <div class="dashboard">
+            <div class="card">
+                <h3>Courses Actives</h3>
+                <p>5</p>
+            </div>
+            <div class="card">
+                <h3>Participants Inscrits</h3>
+                <p>250</p>
+            </div>
+            <div class="card">
+                <h3>Prochaine Course</h3>
+                <p>10 Mars 2025</p>
+            </div>
+        </div>
+
+        <!-- Section Gestion des Courses -->
+        <div class="manage-courses">
+            <h2>Gestion des Courses</h2>
+            <button class="button">Créer une Nouvelle Course</button>
+
+            <table>
+                <tr>
+                    <th>Nom de la Course</th>
+                    <th>Distance</th>
+                    <th>État</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>100m Sprint</td>
+                    <td>100m</td>
+                    <td>En cours</td>
+                    <td><button class="button">Détails</button></td>
+                </tr>
+                <tr>
+                    <td>Marathon</td>
+                    <td>42.195km</td>
+                    <td>À venir</td>
+                    <td><button class="button">Détails</button></td>
+                </tr>
+                <tr>
+                    <td>Relais 4x400m</td>
+                    <td>1600m</td>
+                    <td>Terminé</td>
+                    <td><button class="button">Résultats</button></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

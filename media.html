@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Média - Événements Sportifs</title>
+    <link rel="stylesheet" href="media.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-header">
+                <h1 class="site-title">Média - Événements Sportifs</h1>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#photos" class="nav-link active">
+                                <span class="checkmark">✓</span>
+                                <span>Photos & Vidéos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#classements" class="nav-link">
+                                <span class="checkmark">✓</span>
+                                <span>Classements & Résumés</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#interviews" class="nav-link">
+                                <span class="checkmark">✓</span>
+                                <span>Interviews & Témoignages</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#social" class="nav-link">
+                                <span class="checkmark">✓</span>
+                                <span>Réseaux Sociaux</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#arbitrage" class="nav-link">
+                                <span class="checkmark">✓</span>
+                                <span>Arbitrage & Sécurité</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="photos" class="media-section">
+            <h2 class="section-title">Photos & Vidéos</h2>
+            <p class="section-intro">Découvrez les meilleurs moments de nos compétitions en images et en vidéos. Revivez l'émotion des courses et performances exceptionnelles.</p>
+            
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="media-image">
+                        <span class="media-type-badge">Photo</span>
+                        <img src="Gallerie/photo1.webp" alt="Finale 100m Hommes">
+                    </div>
+                    <div class="media-content">
+                        <h3>Finale 100m Hommes</h3>
+                        <p>La ligne d'arrivée palpitante de la finale du 100m hommes avec un photo-finish historique et des records battus.</p>
+                        <a href="Gallerie.html" class="btn">Voir la galerie</a>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <div class="media-image">
+                        <span class="media-type-badge">Vidéo</span>
+                        <img src="Photo.PNG" alt="400m Dames - Course complète">
+                    </div>
+                    <div class="media-content">
+                        <h3>400m Dames - Course complète</h3>
+                        <p>Replay intégral de la course du 400m dames avec commentaires techniques et analyses des performances.</p>
+                        <a href="https://www.youtube.com/watch?v=V3aeiR7plQw" class="btn">Regarder la vidéo</a>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+            <div class="media-image">
+        <!-- Image cliquable -->
+        <img id="image-popup" src="photo6.avif" alt="Photo de l'événement" class="media-image-img">
+    </div>
+    <div class="media-content">
+        <h3>Cérémonie de remise des médailles</h3>
+        <p>Les lauréats du 1000m sur le podium.</p>
+    </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Récupère les éléments
+    var img = document.getElementById("image-popup");
+    var lightbox = document.getElementById("lightbox");
+    var lightboxImg = document.getElementById("lightbox-img");
+    var closeBtn = document.querySelector(".close");
+
+    // Quand on clique sur l'image, on affiche la lightbox
+    img.addEventListener("click", function () {
+        lightbox.style.display = "block";
+        lightboxImg.src = this.src;
+    });
+
+    // Quand on clique sur le bouton de fermeture, on cache la lightbox
+    closeBtn.addEventListener("click", function () {
+        lightbox.style.display = "none";
+    });
+
+    // Quand on clique en dehors de l'image, on ferme aussi la lightbox
+    lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) {
+            lightbox.style.display = "none";
+        }
+    });
+});
+</script>
+
+        </section>
+        
+        <section id="classements" class="media-section">
+            <h2 class="section-title">Classements & Résumés</h2>
+            <p class="section-intro">Consultez les résultats détaillés et les analyses des courses. Explorez les statistiques, les temps officiels et les comparaisons de performances.</p>
+            
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="media-content">
+                        <h3>Classement 100m</h3>
+                        <p>Résultats complets et statistiques des performances du 100m avec les temps intermédiaires et les vitesses maximales atteintes.</p>
+                        <a href="classement100.php" class="btn">Voir les résultats</a>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <div class="media-content">
+                        <h3>Classement 400m</h3>
+                        <p>Tableau des temps et analyse des performances du 400m, incluant les splits par 100m et les comparaisons avec les records précédents.</p>
+                        <a href="classement400.php" class="btn">Voir les résultats</a>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <div class="media-content">
+                        <h3>Classement 1000m</h3>
+                        <p>Résultats complets et comparaison avec les performances précédentes, analyse du rythme et des stratégies de course des finalistes.</p>
+                        <a href="classement1000.php" class="btn">Voir les résultats</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="interviews" class="media-section">
+            <h2 class="section-title">Interviews & Témoignages</h2>
+            <p class="section-intro">Écoutez les athlètes et les entraîneurs parler de leurs performances et expériences. Découvrez les coulisses de la préparation et les récits personnels.</p>
+            
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="media-image">
+                        <span class="media-type-badge">Interview</span>
+                        <img src="Vainc.jpeg" alt="Interview du vainqueur du 100m">
+                    </div>
+                    <div class="media-content">
+                        <h3>Interview du vainqueur du 100m</h3>
+                        <p>"Comment j'ai préparé cette finale" - Entretien exclusif avec le champion qui révèle sa préparation mentale et physique.</p>
+                        <a href="https://www.youtube.com/watch?v=Ik8tmIX9LkY" class="btn">Voir l'interview</a>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <div class="media-image">
+                        <span class="media-type-badge">Témoignage</span>
+                        <img src="entrain.jpg" alt="Témoignage de l'entraîneur national">
+                    </div>
+                    <div class="media-content">
+                        <h3>Témoignage de l'entraîneur national</h3>
+                        <p>Analyse technique des performances et perspectives futures pour l'équipe nationale après ces championnats prometteurs.</p>
+                        <a href="https://www.milesplit.com/videos/191389/alleyne-francique-after-team-win" class="btn">Lire le témoignage</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="social" class="media-section">
+            <h2 class="section-title">Réseaux Sociaux</h2>
+            <p class="section-intro">Suivez l'actualité de nos événements sur les réseaux sociaux et restez connectés avec les athlètes et les dernières mises à jour.</p>
+            
+            <div class="media-grid">
+                <div class="media-card social-card">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"/>
+                        </svg>
+                    </div>
+                    <div class="media-content">
+                        <h3>Suivez-nous sur Twitter</h3>
+                        <p>Les dernières mises à jour et résultats en temps réel. Participez aux discussions et suivez les commentaires en direct pendant les compétitions.</p>
+                        <a href="https://x.com/RUN_IX" class="btn">Twitter</a>
+                    </div>
+                </div>
+                
+                <div class="media-card social-card">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </div>
+                    <div class="media-content">
+                        <h3>Instagram</h3>
+                        <p>Les plus belles photos des compétitions, des coulisses et des moments d'émotion capturés lors de nos événements sportifs.</p>
+                        <a href="https://www.instagram.com/run_ix/" class="btn">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="arbitrage" class="media-section">
+            <h2 class="section-title">Arbitrage & Sécurité</h2>
+            <p class="section-intro">Informations sur les règles d'arbitrage et les mesures de sécurité lors de nos événements. Consultez les documents officiels et les protocoles en vigueur.</p>
+            
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="media-content">
+                        <h3>Guide des règles d'arbitrage</h3>
+                        <p>Tout ce que vous devez savoir sur les règles officielles des compétitions, les critères de jugement et les procédures de réclamation.</p>
+                        <a href="Regles.pdf" class="btn">Télécharger le guide</a>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <div class="media-content">
+                        <h3>
+                
+                <div class="media-card">
+                    <div class="media-content">
+                        <h3>Protocoles de sécurité</h3>
+                        <p>Mesures mises en place pour assurer la sécurité des athlètes et du public.</p>
+                        <a href="Sec.pdf" class="btn">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center; padding: 1rem 0; color: var(--secondary-color);">
+            <p>&copy; 2025 Événements Sportifs - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script pour la navigation active
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

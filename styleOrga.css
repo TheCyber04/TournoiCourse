@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::before, ::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #12cff9;
+    background: #12cff9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 0.5em;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5em;
+    border: 8px solid var(--lighter-color);
+    border-radius: 15px;
+    background-color: #faf9ff;
+}
+
+/* ==> Progress <== */
+.form-box .progress {
+    position: relative;
+    padding: 1em;
+}
+
+/* ==> Progress step <== */
+
+.progress ul.progress-steps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.progress ul.progress-steps li {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2em;
+}
+
+/* Pour les éléments <span> dans <li> des étapes de progression */
+progress ul.progress-steps li > span {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    font-size: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+    border-radius: 50%;
+    background-color: #ffffff95;
+    z-index: 1;
+}
+
+/* Style des éléments <span> actifs */
+progress ul.progress-steps li.active > span {
+    color: white;
+    background-color: #3891a5;
+    border: 4px solid #faf9ff;
+    z-index: 2;
+}
+
+.progress ul.progress-steps li p span {
+    font-size: #8d2b2b;
+    color: #1d9fc0;
+}
+
+/* ==> Form */
+.form-box form {
+    width: 100%;
+    padding: 3em 1em;
+    background-color: white;
+    border-radius: 30px 30px 15px 15px;
+}
+

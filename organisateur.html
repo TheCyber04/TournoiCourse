@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisateur</title>
+    <link rel="stylesheet" href="styleOrga.css">
+</head>
+<body>
+    <div class="site">
+        <div class="container">
+            <div class="form-box">
+                <div class="progress">
+                    <ul class="progress-steps">
+                        <li class="step active" >
+                            <span>1</span>
+                            <p>Parcours & Créneaux<br><span>25 seconde pour completer</span></p>
+                        </li>
+                        <li class="step" >
+                            <span>2</span>
+                            <p>Coureur <br><span>60 seconde pour completer</span></p>
+                        </li>
+                        <li class="step active" >
+                            <span>3</span>
+                            <p>Carte <br><span>30 seconde pour completer</span></p>
+                        </li>
+                    </ul>
+                </div>
+                <form action="">
+                    <div class="form-one form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Définition du parcours</h2>
+                        <p>Remplissez les informations de planification</p>
+                        <div>
+                            <label>Distance</label>
+                            <select name="distance" id="distance">
+                                <option value="100m">100m</option>
+                                <option value="400m">400m</option>
+                                <option value="1000m">1000m</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Horaire GMT</label>
+                            <input type="time">
+                        </div>
+                        <div>
+                            <label></label>
+                            <input type="text" pattern="[0-9]" name="jour" min="0" max="31">
+                            <input type="text" pattern="[0-9]" name="mois" min="0" max="12">
+                            <input type="text" pattern="[0-9]" name="anne" min="0" max="2050">
+                        </div>
+                    </div>
+                    <div class="form-two form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Coureur</h2>
+                        <p>Choisissez les athlétes de cette course</p>
+                    
+                        <div>
+                            <label></label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="form-three form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Carte</h2>
+                        <!-- <p>Choisissez les athlétes de cette course</p> -->
+                    
+                        <div>
+                            <label>Ajouter les Coordonnées</label>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <input type="button" value="Marquer">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn-prev">Retour</button>
+                        <button type="button" class="btn-prev">Suivant</button>
+                        <button type="button" class="btn-prev">Valider</button>
+
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+    <script src="script2.js"></script>
+</body>
+</html>
