@@ -72,11 +72,10 @@ FROM athelete a WHERE email ='$mAil' AND password='$mdP'";
 
 
  else{
-     session_start();
-     $_SESSION['mail']=$mAil;
-         $_SESSION['mdp']=$mdP;
+     echo"email ou mot de passe incorrect "
+  <a href="index.html" retour > </a> 
  
-  header("Location:index.html"); 
+  
 
   mysqli_close($connexion); }
   }
