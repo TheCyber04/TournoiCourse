@@ -21,7 +21,10 @@ $distance=$_REQUEST["distance"];
 $email=$_REQUEST["mail"];
 $dateActuelle=date("Y");
 //Recupere l'annee actuelle 
-
+if((float)$pays || (float)$nom || (float)$nickname || (float)$aDresse){
+    echo"Format incorrect du nom, prénom, pays ou adresse";
+                                                                      } 
+else{
 
 if(($dateActuelle-$annee)>=18){
     if(strcmp($paSseword,$pAsseword)!=0){
@@ -57,6 +60,6 @@ if (mysqli_num_rows($result) > 0) {
 
 if(($dateActuelle-$annee)<18) {
     echo "Désolé, vous êtes trop jeune pour participer!";
-}
+}}
 
 ?>
