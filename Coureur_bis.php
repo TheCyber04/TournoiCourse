@@ -19,9 +19,11 @@ $licence=$_REQUEST["Licence"];
 $pAsseword= $_REQUEST['mDp'];
 $distance=$_REQUEST["distance"];
 $email=$_REQUEST["mail"];
-//echo $naissance;
 $dateActuelle=date("Y");
 //Recupere l'annee actuelle 
+if(!(is_string($pays)) || !(is_string($nom)) || !(is_string($nickname)) || !(is_string($aDresse))) {
+    echo"Le nom, le prénom, l'adresse ou le pays sont incorrects";
+}
 
 if(($dateActuelle-$annee)>=18){
     if(strcmp($paSseword,$pAsseword)!=0){
