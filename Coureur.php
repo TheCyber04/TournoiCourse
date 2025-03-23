@@ -72,8 +72,9 @@ FROM athelete a WHERE email ='$mAil' AND password='$mdP'";
 
 
  else{
-     echo"email ou mot de passe incorrect ";
- // echo'<a href="index.html" retour > </a>'; 
+     echo"email ou mot de passe incorrect <br>";
+     echo"Retournez pour modifier<br>";
+  echo'<a href="index.html" >Retour </a>'; 
  
   
 
