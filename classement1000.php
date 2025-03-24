@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
+      @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hoverEffect {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     text-align: center;
@@ -38,19 +58,29 @@ th {
     font-weight: bold;
 }
 
+tr {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards; /* Durée de 1 seconde pour un effet plus lent */
+}
+
+tr:nth-child(odd) {
+    animation-delay: 0.4s; /* Décalage de l'animation pour les lignes impaires */
+}
+
 tr:nth-child(even) {
-    background: #f9f9f9;
+    animation-delay: 0.6s; /* Décalage de l'animation pour les lignes paires */
 }
 
 tr:hover {
-    background: #f1f1f1;
-    transition: 0.3s ease-in-out;
+    animation: hoverEffect 0.3s ease-in-out forwards;
+    background: #e0e0e0;  /* Couleur de fond au survol */
 }
 
 td:first-child {
     font-weight: bold;
     color: #007BFF;
 }
+
 
     </style>
 </head>
@@ -70,7 +100,11 @@ if (!$connexion) {
     die("Échec de la connexion : " . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM athelete WHERE distance = 1000";
+$sql = "SELECT a.id, a.name, a.firstname, a.nationality,
+(SELECT c.temps FROM course_athelete c WHERE c.athelete_id = a.id LIMIT 1) AS temps 
+FROM athelete a
+WHERE a.distance = 1000 HAVING temps IS NOT NULL AND temps > 0";
+
 $result = $connexion->query($sql);
 
 if (!$result) {
@@ -83,7 +117,7 @@ $resultats = $result->fetch_all(MYSQLI_ASSOC);
 usort($resultats, fn($a, $b) => $a['temps'] <=> $b['temps']);
 
 function afficherTableau($resultats) {
-    echo "<h2>Classement pour les athlètes 1000m</h2>";
+    echo "<h2>Classement pour les athlètes 100m</h2>";
     echo "<table border='1'>
     <tr>
         <th>Position</th>
