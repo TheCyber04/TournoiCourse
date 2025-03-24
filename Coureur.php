@@ -16,7 +16,7 @@ $mdP=$_REQUEST["mot_de_passe"];
   $nomServeur="localhost";
   $user="root";
   $motPasse="";
-  $nomBase="projet";
+  $nomBase="test";
   $connexion=mysqli_connect($nomServeur,$user,$motPasse,$nomBase);
 //$connexion est un objet de la classe mysqli_connect
 //mysqli_connect renvoie un objet  
