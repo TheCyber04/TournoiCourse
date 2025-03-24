@@ -43,8 +43,8 @@ if (mysqli_num_rows($result) > 0) {
     echo "Erreur : cet email est déjà utilisé.";
 } else {
     // Insertion uniquement si l'email n'existe pas
-    $sql = "INSERT INTO athelete (name, firstname, date_de_naissance, login, password, license, distance, nationality, email) 
-            VALUES ('$nom', '$nickname', '$naissance', '$log_in', '$paSseword', '$licence', '$distance', '$pays', '$email')";
+    $sql = "INSERT INTO athelete (name, firstname, date_de_naissance,  password,  distance, nationality, email) 
+            VALUES ('$nom', '$nickname', '$naissance',  '$paSseword',  '$distance', '$pays', '$email')";
 
     if (mysqli_query($connexion, $sql)) {
         echo "Inscription réussie.";
