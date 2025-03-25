@@ -186,7 +186,6 @@ if ($result->num_rows > 0) {
                 </ul>
             </div>
 
-
     
             <div class="calendrier">
                 <div class="header">
