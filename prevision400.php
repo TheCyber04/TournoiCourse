@@ -11,6 +11,12 @@
         table, th, td {
             border: 1px solid #000;
         }
+        
+    th {
+        background-color: #007BFF;
+        color: white;
+    }
+
         th, td {
             padding: 8px;
             text-align: left;
