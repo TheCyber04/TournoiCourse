@@ -138,7 +138,7 @@
     $db_server = "localhost";
     $db_user = "root";
     $db_pass = "";
-    $db_name = "projet";
+    $db_name = "test";
 
     $connexion = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
     if (!$connexion) {
