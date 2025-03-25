@@ -1,88 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organisateur</title>
-    <link rel="stylesheet" href="styleOrga.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organisateur</title>
+  <style>
+
+    :root {
+      --bg-page: #e9ecef;
+      --text-color: #495057;
+      --primary-color: #007bff;
+      --primary-hover: #0056b3;
+      --secondary-color: #000000;
+      --border-color: #ced4da;
+      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      --radius: 10px;
+      --transition: 0.3s;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .site {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .form-box {
+      background-color: #ffffff;
+      border-radius: var(--radius);
+      box-shadow: var(--box-shadow);
+      padding: 30px;
+      transition: transform var(--transition);
+    }
+    .form-box:hover {
+      transform: scale(1.02);
+    }
+
+    .form-box h2 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      text-align: center;
+    }
+    .form-box p {
+      color: var(--secondary-color);
+      text-align: center;
+    }
+
+    .progress {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .progress-steps {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .progress-steps li {
+      flex: 1;
+      margin: 0 5px;
+      background: var(--border-color);
+      color: var(--text-color);
+      border-radius: var(--radius);
+      padding: 10px;
+      font-size: 0.9em;
+      text-align: center;
+    }
+    .progress-steps li.active {
+      background: var(--primary-color);
+      color: #ffffff;
+    }
+
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    form input[type="text"],
+    form input[type="time"],
+    form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      font-size: 1em;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      box-sizing: border-box;
+    }
+    form input:focus,
+    form select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      outline: none;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn-group button {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+    .btn-group button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 400px) {
+      .form-box {
+        padding: 20px;
+      }
+      .form-box h2 {
+        font-size: 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="site">
-        <div class="container">
-            <div class="form-box">
-                <div class="progress">
-                    <ul class="progress-steps">
-                        <li class="step active" >
-                            <span>1</span>
-                            <p>Parcours & Créneaux<br><span>25 seconde pour completer</span></p>
-                        </li>
-                        <li class="step" >
-                            <span>2</span>
-                            <p>Coureur <br><span>60 seconde pour completer</span></p>
-                        </li>
-                        <li class="step active" >
-                            <span>3</span>
-                            <p>Carte <br><span>30 seconde pour completer</span></p>
-                        </li>
-                    </ul>
-                </div>
-                <form action="">
-                    <div class="form-one form-step">
-                        <div class="bg-svg"></div>
-                        <h2>Définition du parcours</h2>
-                        <p>Remplissez les informations de planification</p>
-                        <div>
-                            <label>Distance</label>
-                            <select name="distance" id="distance">
-                                <option value="100m">100m</option>
-                                <option value="400m">400m</option>
-                                <option value="1000m">1000m</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Horaire GMT</label>
-                            <input type="time">
-                        </div>
-                        <div>
-                            <label></label>
-                            <input type="text" pattern="[0-9]" name="jour" min="0" max="31">
-                            <input type="text" pattern="[0-9]" name="mois" min="0" max="12">
-                            <input type="text" pattern="[0-9]" name="anne" min="0" max="2050">
-                        </div>
-                    </div>
-                    <div class="form-two form-step">
-                        <div class="bg-svg"></div>
-                        <h2>Coureur</h2>
-                        <p>Choisissez les athlétes de cette course</p>
-                    
-                        <div>
-                            <label></label>
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="form-three form-step">
-                        <div class="bg-svg"></div>
-                        <h2>Carte</h2>
-                        <!-- <p>Choisissez les athlétes de cette course</p> -->
-                    
-                        <div>
-                            <label>Ajouter les Coordonnées</label>
-                            <input type="text">
-                        </div>
-                        <div>
-                            <input type="button" value="Marquer">
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn-prev">Retour</button>
-                        <button type="button" class="btn-prev">Suivant</button>
-                        <button type="button" class="btn-prev">Valider</button>
-
-                    </div>
-                </form>
+  <div class="site">
+    <div class="container">
+      <div class="form-box">
+        <div class="progress">
+          <ul class="progress-steps">
+            <li class="step active">
+              <span>1</span>
+              <p>Parcours &amp; Créneaux<br><span>25 secondes pour compléter</span></p>
+            </li>
+            <li class="step">
+              <span>2</span>
+              <p>Coureur<br><span>60 secondes pour compléter</span></p>
+            </li>
+            <li class="step active">
+              <span>3</span>
+              <p>Carte<br><span>30 secondes pour compléter</span></p>
+            </li>
+          </ul>
+        </div>
+        <form action="">
+          <div class="form-one form-step">
+            <div class="bg-svg"></div>
+            <h2>Définition du parcours</h2>
+            <p>Remplissez les informations de planification</p>
+            <div>
+              <label>Distance</label>
+              <select name="distance" id="distance">
+                <option value="100m">100m</option>
+                <option value="400m">400m</option>
+                <option value="1000m">1000m</option>
+              </select>
             </div>
-        </div> 
+            <div>
+              <label>Horaire GMT</label>
+              <input type="time">
+            </div>
+            <div>
+              <label>Date (Jour / Mois / Année)</label>
+              <input type="text" pattern="[0-9]" name="jour" placeholder="Jour">
+              <input type="text" pattern="[0-9]" name="mois" placeholder="Mois">
+              <input type="text" pattern="[0-9]" name="anne" placeholder="Année">
+            </div>
+          </div>
+          <div class="form-two form-step">
+            <div class="bg-svg"></div>
+            <h2>Coureur</h2>
+            <p>Choisissez les athlètes de cette course</p>
+            <div>
+              <label></label>
+              <input type="text">
+            </div>
+          </div>
+          <div class="form-three form-step">
+            <div class="bg-svg"></div>
+            <h2>Carte</h2>
+            <div>
+              <label>Ajouter les Coordonnées</label>
+              <input type="text">
+            </div>
+            <div>
+              <input type="button" value="Marquer">
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn-prev">Retour</button>
+            <button type="button" class="btn-prev">Suivant</button>
+            <button type="button" class="btn-prev">Valider</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <script src="script2.js"></script>
+  </div>
+  <script src="script2.js"></script>
 </body>
 </html>
