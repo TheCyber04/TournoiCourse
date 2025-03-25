@@ -119,6 +119,7 @@
             }
             else{
                 echo "<p class='error'>Accès refusé: email ou mot de passe incorrect</p>";
+                echo'<a href="index.php"> Retour</a>';
             }
             mysqli_close($connexion);
         }
