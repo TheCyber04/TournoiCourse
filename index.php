@@ -48,6 +48,7 @@ if ($result->num_rows > 0) {
             <li><a href="#carte-course">Ma carte</a></li>
             <li><a href="#contact">Nous contacter</a></li>
             <li><a href="media.html">Media</a></li>
+               <li><a href="login.php">Asdmin</a></li>
         </ul>
     
         <div class="nav-icon">
