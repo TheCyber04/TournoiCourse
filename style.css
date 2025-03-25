@@ -8,21 +8,41 @@
     text-decoration: none;
 }
 
-header{
-        position: fixed;
-        width: 100%;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 10px;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.04);
-        box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+/* En-tête de base (transparent) */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.04); /* Transparent au début */
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75); /* Ombre subtile */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transition douce pour le changement */
 }
+
+/* Style lorsque l'utilisateur fait défiler la page */
+header.scrolled {
+    background: #193fb0; /* Bleu quand défilement */
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.25); /* Ombre plus légère */
+}
+
+/* Les éléments dans le header (logo, menu, etc.) */
+header .logo, header .menu {
+    color: #fff;
+    transition: color 0.3s ease-in-out; /* Transition pour les couleurs */
+}
+
+/* Lorsque l'en-tête devient bleu, on peut aussi changer la couleur du logo/texte */
+header.scrolled .logo, header.scrolled .menu {
+    color: #fff; /* Le texte reste blanc, vous pouvez ajuster cette couleur si besoin */
+}
+
 
 .logo{
     color: #fff;
@@ -30,25 +50,33 @@ header{
     font-size: 2em;
     text-decoration: none;
     padding-left: 30px;
+    transition: all 0.3s ease; /* Transition fluide */
 }
 
 .logo span{
     color: rgb(15, 11, 243);
-}
+} 
 
+
+.logo:hover{
+    color: #1E90FF; /* Bleu clair (couleur en harmonie avec le bleu) */
+    text-shadow: 0 0 15px #1E90FF, 0 0 30px #1E90FF, 0 0 45px #1E90FF; /* Ombres bleues */
+    transform: scale(1.1); /* Effet d'agrandissement léger pour plus de dynamisme */}
 
 .navbar{
     display: flex;
+    gap: 20px;
     
 }
 
 .navbar a{
     color: #fff;
     font-size: 16px;
-    text-transform: capitalize;
+    text-transform: capitalize; 
     padding: 10px 20px;
-    font-weight: 400;
-    transition: all .50 ease;
+    font-weight: 500;
+    /* transition: all .50 ease; */
+    transition: color 0.3s ease-in-out;
 }
 
 .navbar a:hover{
@@ -60,6 +88,7 @@ header{
 .nav-icon{
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .nav-icon i{
@@ -67,7 +96,7 @@ header{
     color: #fff;
     font-size: 25px;
     font-weight: 400;
-    transition: all .50 ease;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
   
 }
 
@@ -112,6 +141,14 @@ header{
     right: 0;
 }
 
+/* Titre du formulaire "Connexion" */
+.form-slide h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 30px; /* Espace sous le titre pour le centrer et le séparer des champs */
+}
+
+
 /* Bouton de fermeture */
 .close-btn {
     font-size: 24px;
@@ -122,34 +159,64 @@ header{
     right: 15px;
 }
 
+.close-btn:hover {
+    color:  rgb(15, 11, 243); /* Changement de couleur au survol */
+}
+
 /* Champs et boutons du formulaire */
 .form-slide input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.form-slide input:focus {
+    border-color: #007BFF; /* Changement de bordure lors du focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Légère lueur bleue au focus */
+    outline: none;
+}
+
 
 .form-slide button {
     width: 100%;
-    padding: 10px;
-    margin-top: 15px;
+    padding: 12px;
+    margin-top: 20px;
     background: #333;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+
 }
 
+.form-slide button:hover {
+    background-color: #0056b3; /* Changement de couleur au survol */
+}
+
+
 .form-slide p {
-    margin-top: 15px;
+    margin-top: 25px;
     text-align: center;
+    font-size: 1em;
 }
 
 .form-slide a {
     color: #007BFF;
     text-decoration: none;
+    font-weight: bold;
+
+}
+
+.form-slide a:hover {
+    text-decoration: underline; /* Souligner le lien au survol */
 }
 
 
@@ -168,25 +235,30 @@ header{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-image: url(./banniere.jpg);
+    background-image: url(./mab\ \(1\).jpg);
     background-size: cover;
     padding: 20px;
     padding-top: 50px;
 }
 
-.banniere .contenue {
-    text-align: left; /* Aligner le texte à gauche */
-    margin-left: 0; /* Supprimer toute marge */
-    padding-left: 0; /* Supprimer tout padding */
-    max-width: 60%;
 
+
+.banniere .contenue {
+    max-width: 60%;
+    color: #fff;
 }
 
 
-.banniere .contenue h2{
-    color: #4a4a4a;
-    font-size: 3.5rem;
+.banniere h2 {
+    font-size: 3rem;
     text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.banniere .contenue p {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 .banniere .contenue .search-box{
@@ -200,7 +272,16 @@ box-shadow: 0 3px 15px rgba(0,0,0,0.1);
 max-width: 100%;
 margin: 0 auto;
 align-self: center;
+transition: opacity 0.4s ease, transform 0.4s ease;
+opacity: 0;
+transform: translateY(-10px);
+pointer-events: none;
+}
 
+.banniere .contenue .search-box.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .search-input{
@@ -223,6 +304,7 @@ align-self: center;
 .search-input:focus{
     outline: none;
     background: transparent;
+    border-color: #193fb0;
 }
 
 .search-input::placeholder{
@@ -235,7 +317,7 @@ align-self: center;
     padding: 0.8rem 2rem;  /* Ajuste la taille du bouton */
     border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     min-width: 120px;
@@ -247,6 +329,8 @@ align-self: center;
     transform: translateY(-1px);
     box-shadow: 0 3px 10px rgba(255, 126, 0, 0.2);
 }
+
+
 p{
     font-weight: 300;
     font-size: 1.5rem;
@@ -271,6 +355,14 @@ section{
     margin-left: 10px;
 }
 
+.btn1:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    text-shadow: 0 0 12px rgba(0, 123, 255, 0.7), 0 0 20px rgba(0, 123, 255, 0.6), 0 0 30px rgba(0, 123, 255, 0.5); /* Lueur subtile mais énergique avec un bleu plus clair */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8), 0 0 25px rgba(0, 123, 255, 0.6); /* Lueur subtile autour de l'élément avec un bleu élégant */
+}
+
+
 .contenue{
     display: flex;
     gap: 20px;
@@ -285,7 +377,7 @@ section{
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
     margin: 15px;
 }
 
@@ -313,9 +405,11 @@ section{
 }
 
 .title{
-    font-size: 18px;
+    font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .carte-contenue{
@@ -506,47 +600,39 @@ section{
     font-weight: bold;
 }
 
-.Carte-courses{
-    margin-top: -140px;
+.Carte-courses {
+    text-align: center;
+    padding: 20px;
 }
-/* La section qui contient la carte */
-#map-container {
-    width: 100%;
-    height: 50vh;
-    position: relative; /* Permet au bouton de se positionner correctement */
-    overflow: hidden;
-    transition: height 0.5s ease-in-out;
-}
+
 
 #map {
     width: 100%;
-    height: 100%;
+    height: 100%
 }
 
-#map-container.expanded {
-    height: 100vh; /* Plein écran quand déployé */
+
+#map-container {
+    position: relative;
+    width: 100%; /* Prendre toute la largeur disponible */
+    height: 300px; /* Taille de la carte */
+    max-width: 100%; /* Suppression de la limite de largeur max ici */
+    margin: 0 auto;
 }
 
-#toggle-map {
-    position: absolute; /* Se place par rapport au #map-container */
-    bottom: 10px; /* Collé en bas */
-    left: 50%; /* Centre horizontalement */
-    transform: translateX(-50%); /* Ajuste pour un vrai centrage */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Overlay translucide */
+    z-index: 9999; /* Mettre l'overlay au-dessus de la carte */
+    cursor: not-allowed; /* Désactive l'interaction avec la carte */
 }
 
-#toggle-map:hover {
-    background-color: #0056b3;
-    transform: translateX(-50%) scale(1.05);
-}
 
 /* Style global pour la section "Nous contacter" */
 .contact-section {
