@@ -85,6 +85,8 @@
                 $sql_check = "SELECT * FROM athelete WHERE email='$email'";
                 $result = mysqli_query($connexion, $sql_check);
 
+                
+
                 if (mysqli_num_rows($result) > 0) {
                     echo "<div class='message error'>Erreur : cet email est déjà utilisé.</div>";
                 } else {
