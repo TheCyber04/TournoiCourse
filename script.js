@@ -14,37 +14,53 @@ const months = [
 const jours = ["Lun", "Mar", "Mer", "Jeu", "Vend", "Sam", "Dim"];
 
 // Dates et initialisation
-const date = new Date();
-let currentMonth = date.getMonth();
-let currentYear = date.getFullYear();
+const date = new Date();  // Contient la date et l'heure
+let currentMonth = date.getMonth(); // Récupère le mois
+let currentYear = date.getFullYear(); // Récupère l'année complète
 
-// Liste des courses (utilise des dates au format 'jour mois')
-const courses = [
-    { date: '2025-03-05', title: 'Course A' },
-    { date: '2025-03-12', title: 'Course B' },
-    { date: '2025-03-19', title: 'Course C' },
-    { date: '2025-03-02', title: 'Course D' },
-    { date: '2025-03-10', title: 'Course E' }
-];
+// Fonction pour afficher la liste des courses
+function renderCourses() {
+    const listCoursesContainer = document.querySelector(".list-courses ul");
+    listCoursesContainer.innerHTML = ""; // Effacer la liste existante
 
-// Fonction pour afficher le calendrier
+    // Boucler sur les courses et les afficher dans la liste
+    courses.forEach(course => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="date">${formatDate(course.date)}</span> - Courses ${course.title}`;
+        listCoursesContainer.appendChild(li);
+    });
+}
+
+// Formater la date en jour mois
+function formatDate(dateString) {
+    const dateObj = new Date(dateString);
+    const day = dateObj.getDate();
+    const month = months[dateObj.getMonth()];
+    return `${day} ${month}`;
+}
+
+// Appeler la fonction pour afficher les courses
+renderCourses();
+
+
+// Fonction pour afficher dynamiquement le calendrier du mois en cours et mettre à jour les dates des courses
 function renderCalendar() {
-    date.setDate(1);
-    const firstDay = new Date(currentYear, currentMonth, 1);
-    const lastDay = new Date(currentYear, currentMonth + 1, 0);
-    const lastDayIndex = lastDay.getDay();
-    const lastDayDate = lastDay.getDate();
-    const prevLastDay = new Date(currentYear, currentMonth, 0);
-    const prevLastDayDate = prevLastDay.getDate();
-    const nextDays = 7 - lastDayIndex - 1;
+    date.setDate(1); // Réinitialiser la date au premier jour du mois
+    const firstDay = new Date(currentYear, currentMonth, 1); // Premier jour du mois
+    const lastDay = new Date(currentYear, currentMonth + 1, 0); // Dernier jour du mois
+    const lastDayIndex = lastDay.getDay(); // Jour de la semaine du dernier jour
+    const lastDayDate = lastDay.getDate(); // Numéro du dernier jour du mois
+    const prevLastDay = new Date(currentYear, currentMonth, 0); // Dernier jour du mois précédent
+    const prevLastDayDate = prevLastDay.getDate(); // Numéro du dernier jour du mois précédent
+    const nextDays = 7 - lastDayIndex - 1; // Jours nécessaires pour compléter la semaine
 
     month.innerHTML = `${months[currentMonth]} ${currentYear}`;
 
     let days = "";
 
     // Jours précédents du mois
-    for (let x = firstDay.getDate(); x > 0; x--) {
-        days += `<div class="jour avant">${prevLastDayDate - x + 1}</div>`;
+    for (let x = firstDay.getDay() - 1; x >= 0; x--) {
+        days += `<div class="jour avant">${prevLastDayDate - x}</div>`;
     }
 
     // Jours du mois actuel
@@ -71,6 +87,7 @@ function renderCalendar() {
     }
 
     daysContainer.innerHTML = days;
+
     renderCourses();  // Mise à jour de la liste des courses
 }
 
@@ -127,5 +144,3 @@ aujbtn.addEventListener("click", () => {
     currentYear = date.getFullYear();
     renderCalendar();
 });
-
-
