@@ -1,3 +1,8 @@
+<?php 
+session_start();
+if (!isset($_SESSION["tentatives"])) {
+    $_SESSION["tentatives"] = 0;
+}?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -65,6 +70,7 @@
     <h1>Informations du coureur</h1>
     <div class="container">
         <?php 
+
         //Récupération des données
         $mAil=$_REQUEST["email"];
         $mdP=$_REQUEST["mot_de_passe"];
@@ -92,6 +98,7 @@
 
             //Comparaison
             if($row){
+                $_SESSION["tentatives"] = 0;
                 $requETe= "SELECT a.name, a.firstname, a.email, a.nationality, a.distance, a.date_de_naissance, a.penality, a.status,
                 (SELECT c.temps FROM course_athelete c WHERE c.athelete_id = a.id LIMIT 1) AS temps 
                 FROM athelete a WHERE email ='$mAil' AND password='$mdP'";
@@ -118,8 +125,14 @@
                 echo "</div>";
             }
             else{
+            
+                if($_SESSION["tentatives"]<3){
                 echo "<p class='error'>Accès refusé: email ou mot de passe incorrect</p>";
                 echo'<a href="index.php"> Retour</a>';
+                }
+                else{
+                    echo"Nombre maximal de tentatives dépassé";
+                }
             }
             mysqli_close($connexion);
         }
