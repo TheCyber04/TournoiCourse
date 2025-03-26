@@ -150,7 +150,7 @@ if ($result->num_rows > 0) {
                     </div>
                 </div>
                 <div class="carte-contenue">
-                    <a href="prevision400m.php" class="btn1">Voir Plus</a>
+                    <a href="prevision400.php" class="btn1">Voir Plus</a>
                 </div>
             </div>
 
