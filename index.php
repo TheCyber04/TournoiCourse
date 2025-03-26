@@ -174,18 +174,10 @@ if ($result->num_rows > 0) {
             <p> Ne manquez aucune course ! <br> Consultez notre calendrier et planifiez votre prochaine aventure sportive dès maintenant ! 🏃‍♂️🔥</p>
         </div>
     
-        <div class="contenue">
+       <div class="contenue">
             <div class="list-courses">
                 <h3>Liste des Courses</h3>
-                <ul>
-                <?php if (count($courses) > 0): ?>
-                    <?php foreach ($courses as $course): ?>
-                        <li><span class="date"><?= date("d M", strtotime($course['date'])) ?></span> - Course <?= $course['id'] ?></li>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <li>Aucune course disponible</li>
-                <?php endif; ?>
-                </ul>
+                <ul></ul>
             </div>
 
     
