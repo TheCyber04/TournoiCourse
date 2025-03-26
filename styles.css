@@ -1,0 +1,204 @@
+/* Général Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* Header */
+header {
+    background: #0f0bf3; /* Bleu */
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.profile {
+    position: relative;
+}
+
+.profile-btn {
+    background: #007bff; /* Bleu clair */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.profile-btn:hover {
+    background: #0056b3; /* Bleu plus foncé */
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.profile-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-menu ul li {
+    padding: 8px 20px;
+}
+
+.profile-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.profile-menu ul li:hover {
+    background-color: #f1f1f1;
+}
+
+.profile:hover .profile-menu {
+    display: block;
+}
+
+/* Tableau de Bord */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.dashboard .card {
+    background: #fff;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.dashboard .card:hover {
+    transform: translateY(-10px);
+}
+
+.dashboard h3 {
+    font-size: 24px;
+    color: #0f0bf3; /* Bleu */
+}
+
+.dashboard p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Gestion des Courses */
+.manage-courses {
+    background: white;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Style des boutons */
+.button, .profile-btn {
+    background: #007bff; /* Bleu clair */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;  /* Assure-toi qu'il n'y a pas de soulignement */
+    transition: background 0.3s ease;
+}
+
+.button:hover, .profile-btn:hover {
+    background: #0056b3; /* Bleu plus foncé */
+}
+
+/* Empêcher les liens d'être soulignés */
+a {
+    text-decoration: none;  
+}
+
+/* Tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #0f0bf3; /* Bleu */
+    color: white;
+}
+
+td {
+    background: #f9f9f9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .dashboard .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
