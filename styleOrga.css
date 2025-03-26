@@ -6,7 +6,7 @@
     --secondary-color: #ffffff; /* Blanc */
     --lighter-color: #d6e4ff; /* Bleu clair */
     --light-color: #f0f6ff; /* Bleu très clair, presque blanc */
-    --dark-color: #2c2f6b; /* Bleu foncé pour le contraste */
+    --dark-color: #121b98; /* Bleu foncé pour le contraste */
 
 
     --font-smaller: 14px;
@@ -155,7 +155,7 @@ form > div {
 }
 
 form > div p {
-    color: var(--light-color);
+    font-size: var(--font-smaller);
     margin-bottom: 2em;
 } 
 
