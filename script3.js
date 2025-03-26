@@ -1,61 +1,39 @@
+//Script pour le formulaire
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Récupérer les éléments de la liste déroulante et des athlètes sélectionnés
-    const athletesSelect = document.getElementById("athletesSelect");
-    const selectedAthletesList = document.getElementById("selectedAthletes");
-    const warning = document.getElementById("warning");
-    const maxSelection = 11;
-    const generateNumbersCheckbox = document.getElementById("generateNumbers");
+    const steps = document.querySelectorAll('.form-step'); // Étapes
+    const stepButtons = document.querySelectorAll('.progress-steps li'); // Boutons
+    const nextButton = document.querySelector('.btn-next'); // Bouton suivant
+    const prevButton = document.querySelector('.btn-prev'); // Bouton précédent
+    const submitButton = document.querySelector('.btn-submit'); // Bouton soumettre
+    let currentStep = 0;
 
-    // Fonction pour générer un numéro de dossard aléatoire
-    function generateDossardNumber() {
-        return Math.floor(Math.random() * 1000) + 1; // Génère un numéro entre 1 et 1000
+    // Met à jour l'étape visible et les boutons
+    function updateStep() {
+        steps.forEach(step => step.classList.remove('active'));
+        stepButtons.forEach(button => button.classList.remove('active'));
+
+        steps[currentStep].classList.add('active');
+        stepButtons[currentStep].classList.add('active');
+
+        prevButton.disabled = currentStep === 0;
+        nextButton.style.display = currentStep === steps.length - 1 ? 'none' : 'inline-block';
+        submitButton.style.display = currentStep === steps.length - 1 ? 'inline-block' : 'none';
     }
 
-    // Fonction pour afficher les athlètes sélectionnés
-    function updateSelectedAthletes() {
-        const selectedOptions = Array.from(athletesSelect.selectedOptions);
-        selectedAthletesList.innerHTML = ""; // Réinitialiser la liste avant d'ajouter les nouvelles options
-
-        // Vérification du nombre maximum de sélection
-        if (selectedOptions.length > maxSelection) {
-            warning.innerText = "Vous pouvez sélectionner au maximum " + maxSelection + " athlètes.";
-            athletesSelect.selectedOptions[selectedOptions.length - 1].selected = false; // Désélectionner le dernier
-        } else {
-            warning.innerText = ""; // Effacer l'avertissement si la sélection est valide
+    nextButton.addEventListener("click", function () {
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            updateStep();
         }
+    });
 
-        // Ajouter chaque athlète sélectionné à la liste
-        selectedOptions.forEach(option => {
-            const li = document.createElement("li");
-            li.textContent = option.text; // Afficher le nom complet de l'athlète
+    prevButton.addEventListener("click", function () {
+        if (currentStep > 0) {
+            currentStep--;
+            updateStep();
+        }
+    });
 
-            // Si la checkbox est cochée, ajouter un numéro de dossard
-            if (generateNumbersCheckbox.checked) {
-                const dossardNumber = generateDossardNumber();
-                const dossardText = document.createElement("span");
-                dossardText.textContent = ` - Numéro de dossard: ${dossardNumber}`;
-                li.appendChild(dossardText);
-            }
-
-            // Bouton de suppression
-            const removeBtn = document.createElement("button");
-            removeBtn.textContent = "Supprimer";
-            removeBtn.onclick = function () {
-                option.selected = false; // Désélectionner l'athlète
-                updateSelectedAthletes(); // Mettre à jour la liste affichée
-            };
-
-            li.appendChild(removeBtn);
-            selectedAthletesList.appendChild(li);
-        });
-    }
-
-    // Écouteur d'événements sur la liste déroulante
-    athletesSelect.addEventListener("change", updateSelectedAthletes);
-
-    // Écouteur d'événements sur la checkbox pour générer les numéros de dossard
-    generateNumbersCheckbox.addEventListener("change", updateSelectedAthletes);
-
-    // Appel initial pour afficher les athlètes sélectionnés
-    updateSelectedAthletes();
+    updateStep();
 });
