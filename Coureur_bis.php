@@ -69,12 +69,16 @@
         $aDresse = $_REQUEST["adresse"];
         $log_in = $_REQUEST["login"];
         $paSseword = $_REQUEST['mdp'];
-        $licence = $_REQUEST["Licence"];
+        //$licence = $_REQUEST["Licence"];
         $pAsseword = $_REQUEST['mDp'];
         $distance = $_REQUEST["distance"];
         $email = $_REQUEST["mail"];
         
         $dateActuelle = date("Y");
+if((float)$pays || (float)$nom || (float)$nickname || (float)$aDresse){
+    echo"Format incorrect du nom, prénom, pays ou adresse";
+                                                                      } 
+else{
 
         if (($dateActuelle - $annee) >= 18) {
             if (strcmp($paSseword, $pAsseword) != 0) {
@@ -103,7 +107,7 @@
             }
         } else {
             echo "<div class='message error'>Désolé, vous êtes trop jeune pour participer!</div>";
-        }
+        }}
         ?>
     </div>
 
