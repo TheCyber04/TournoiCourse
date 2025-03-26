@@ -49,6 +49,7 @@ if ($result->num_rows > 0) {
             <li><a href="#contact">Nous contacter</a></li>
             <li><a href="media.html">Media</a></li>
                <li><a href="login.php">Admin</a></li>
+             <li><a href="login_organisateur.php">Organisateur</a></li>
         </ul>
     
         <div class="nav-icon">
