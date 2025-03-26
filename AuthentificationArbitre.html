@@ -4,16 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion arbitre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        input[type="text"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-   <h1>Veuillez vous identifier</h1>
-   Identifiant : <input style="margin:10px;" type="number" name="id" /> <br/>
-   Nom: <input style="margin:10px;" type="text" name="nOm" /> <br/>
-   Prénom: <input style="margin:10px;" type="text" name="nickname" /> <br/>
-   Pays: <input style="margin:10px;" type="text" name="pays" /> <br/>
-   Adresse: <input style="margin:10px;" type="text" name="adresse" /> <br/>
-   Nom d'utilisateur: <input style="margin:10px;" type="text" name="login" /> <br/>
-    Mot de passe : <input style="margin:10px;" type="password" name="mdp" /> <br/>
-   <input style="margin:10px;" type="submit" value="soumettre"onclick="window.open('VerificationArbitre.php', '_blank');"/>  
+    <h1>Veuillez vous identifier</h1>
+    <form method="POST" action="">
+        <label>Identifiant :</label>
+        <input type="number" name="id" required>
+        
+        <label>Nom :</label>
+        <input type="text" name="nOm" required>
+        
+        <label>Prénom :</label>
+        <input type="text" name="nickname" required>
+        
+        <label>Pays :</label>
+        <input type="text" name="pays" required>
+        
+        <label>Adresse :</label>
+        <input type="text" name="adresse" required>
+        
+        <label>Nom d'utilisateur :</label>
+        <input type="text" name="login" required>
+        
+        <label>Mot de passe :</label>
+        <input type="password" name="mdp" required>
+        
+        <input style="margin:10px;" type="submit" value="soumettre"onclick="window.open('VerificationArbitre.php', '_blank');"/>  
+    </form>
+
+    <?php
+    // Connexion DB
+    $conn = mysqli_connect("localhost", "root", "", "test") or die("Erreur connexion");
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Récupération données
+        $login = mysqli_real_escape_string($conn, $_POST['login']);
+        $mdp = mysqli_real_escape_string($conn, $_POST['mdp']);
+
+        // Requête
+        $sql = "SELECT 1 FROM acteur_speciaux WHERE idenfiant ='$login' AND mot_de_passe='$mdp'";
+        $result = mysqli_query($conn, $sql);
+
+        // Vérification
+        if (mysqli_num_rows($result)) {
+            echo "<p style='color:green; text-align:center;'>Connexion réussie!</p>";
+        } else {
+            echo "<p style='color:red; text-align:center;'>Échec de connexion</p>";
+        }
+    }
+
+    mysqli_close($conn);
+    ?>
 </body>
 </html>
