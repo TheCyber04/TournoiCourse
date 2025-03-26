@@ -49,7 +49,7 @@
                     <th>Action</th>
                 </tr>";
         
-        $count = 1;
+        $count = 4;
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
                     <td>{$row['id']}</td>
