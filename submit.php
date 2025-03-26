@@ -18,36 +18,23 @@ $annee = isset($_POST['annee']) ? $_POST['annee'] : null;
 $mois = isset($_POST['mois']) ? $_POST['mois'] : null;
 $jour = isset($_POST['jour']) ? $_POST['jour'] : null;
 $stade = isset($_POST['stade']) ? $_POST['stade'] : null;
+$distance = isset($_POST['distance']) ? $_POST['distance'] : null;  // Récupération de la distance
 
 // Valider les données récupérées
-if (!$annee || !$mois || !$jour || !$stade) {
+if (!$annee || !$mois || !$jour || !$stade || !$distance) {
     die("Erreur : tous les champs requis doivent être remplis.");
 }
 
 // Création de la date au format attendu
 $date_course = "$annee-$mois-$jour";
 
-// Insérer une nouvelle course sans mise à jour
+// Insertion d'une nouvelle course
 $stmt = $mysqli->prepare("INSERT INTO course (type, date, lieu) VALUES (?, ?, ?)");
 $stmt->bind_param('sss', $distance, $date_course, $stade);
 $stmt->execute();
-$course_id = $stmt->insert_id; // Récupérer l'ID de la nouvelle course
 
-// Suppression des anciens athlètes associés (dans le cas où une course aurait des athlètes liés)
-$stmt = $mysqli->prepare("DELETE FROM course_athelete WHERE course_id = ?");
-$stmt->bind_param('i', $course_id);
-$stmt->execute();
-
-// Ajout des nouveaux athlètes sélectionnés
-if (isset($selected_athletes) && is_array($selected_athletes)) {
-    foreach ($selected_athletes as $athlete_id) {
-        $stmt = $mysqli->prepare("INSERT INTO course_athelete (course_id, athelete_id) VALUES (?, ?)");
-        $stmt->bind_param('ii', $course_id, $athlete_id);
-        $stmt->execute();
-    }
-} else {
-    die("Erreur : Aucun athlète sélectionné.");
-}
+// Récupérer l'ID de la nouvelle course
+$course_id = $stmt->insert_id;
 
 // Redirection vers confirmation.php
 header("Location: confirmation.php?id=$course_id&date=$date_course");
