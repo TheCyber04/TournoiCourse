@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 26 mars 2025 à 01:33
+-- Généré le : mer. 26 mars 2025 à 01:59
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -340,6 +340,26 @@ CREATE TABLE `license` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `organizers`
+--
+
+CREATE TABLE `organizers` (
+  `id` int(11) NOT NULL,
+  `login` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Déchargement des données de la table `organizers`
+--
+
+INSERT INTO `organizers` (`id`, `login`, `password`, `created_at`) VALUES
+(1, 'admin', '123', '2025-03-26 00:56:59');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `user`
 --
 
@@ -395,6 +415,13 @@ ALTER TABLE `license`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `organizers`
+--
+ALTER TABLE `organizers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `login` (`login`);
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
@@ -434,6 +461,12 @@ ALTER TABLE `course`
 --
 ALTER TABLE `license`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=417;
+
+--
+-- AUTO_INCREMENT pour la table `organizers`
+--
+ALTER TABLE `organizers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `user`
