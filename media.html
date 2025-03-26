@@ -94,33 +94,7 @@
     <span class="close">&times;</span>
     <img class="lightbox-content" id="lightbox-img">
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Récupère les éléments
-    var img = document.getElementById("image-popup");
-    var lightbox = document.getElementById("lightbox");
-    var lightboxImg = document.getElementById("lightbox-img");
-    var closeBtn = document.querySelector(".close");
 
-    // Quand on clique sur l'image, on affiche la lightbox
-    img.addEventListener("click", function () {
-        lightbox.style.display = "block";
-        lightboxImg.src = this.src;
-    });
-
-    // Quand on clique sur le bouton de fermeture, on cache la lightbox
-    closeBtn.addEventListener("click", function () {
-        lightbox.style.display = "none";
-    });
-
-    // Quand on clique en dehors de l'image, on ferme aussi la lightbox
-    lightbox.addEventListener("click", function (e) {
-        if (e.target === lightbox) {
-            lightbox.style.display = "none";
-        }
-    });
-});
-</script>
 
         </section>
         
@@ -253,18 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     </footer>
 
-    <script>
-        // Script pour la navigation active
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.forEach(item => item.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        });
-    </script>
+   
 </body>
 </html>
