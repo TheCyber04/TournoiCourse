@@ -103,13 +103,13 @@ if ($result->num_rows > 0) {
 <section class="banniere" id="banniere">
         <div class="contenue">
             <h2>Des Courses Palpitantes</h2>
-            <p>Enfilez vos baskets, dépassez vos limites et vibrez au rythme de la course ! </p>
-            <div class="search-box" id="search-box">
-                <input type="text" class="search-input" placeholder="pays">
-                <input type="text" class="search-input" placeholder="Course">
-                <input type="text" class="search-input" placeholder="Mot clé">
-                 <input type="submit" value="rechercher">
-            </div>    
+            <p>Enfilez vos baskets, dépassez vos limites et vibrez au rythme de la course ! 🏃‍♂️🔥</p>
+            <form action="recherche.php" method="GET" class="search-box" id="search-box">
+            <input type="text" class="search-input" name="pays" placeholder="Pays">
+            <input type="text" class="search-input" name="course" placeholder="Course">
+            <input type="text" class="search-input" name="mot_cle" placeholder="Mot clé">
+            <input type="submit" value="Rechercher">
+        </form>     
              
         </div> 
         
