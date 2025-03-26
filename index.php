@@ -50,6 +50,7 @@ if ($result->num_rows > 0) {
             <li><a href="media.html">Media</a></li>
                <li><a href="login.php">Admin</a></li>
              <li><a href="login_organisateur.php">Organisateur</a></li>
+               <li><a href="AuthentificationArbitre.html">Admin</a></li>
         </ul>
     
         <div class="nav-icon">
