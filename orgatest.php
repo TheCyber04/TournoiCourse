@@ -64,9 +64,11 @@ $connexion->close();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Organisateur - Course à Pied</title>
+  <link rel="stylesheet" href="styles.css">
+
   <style>
 
-    :root {
+    /* :root {
       --bg-page: #e9ecef;
       --text-color: #495057;
       --primary-color: #007bff;
@@ -176,7 +178,7 @@ $connexion->close();
       .dashboard {
         flex-direction: column;
       }
-    }
+    } */
   </style>
 </head>
  <header>
