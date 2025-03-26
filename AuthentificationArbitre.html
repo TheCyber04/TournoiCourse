@@ -1,3 +1,6 @@
+<? if (!isset($_SESSION["tentatives"])) {
+    $_SESSION["tentatives"] = 0;
+}?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -97,8 +100,12 @@
         if (mysqli_num_rows($result)) {
             echo "<p style='color:green; text-align:center;'>Connexion réussie!</p>";
         } else {
+    $_SESSION["tentatives"]++;
+    if($_SESSION["tentatives"]<3){
             echo "<p style='color:red; text-align:center;'>Échec de connexion</p>";
-        }
+        } else{
+    echo"Nombre limite de tentatives dépassé";
+        }}
     }
 
     mysqli_close($conn);
