@@ -125,7 +125,7 @@ if (!isset($_SESSION["tentatives"])) {
                 echo "</div>";
             }
             else{
-            
+                   $_SESSION["tentatives"]++;
                 if($_SESSION["tentatives"]<3){
                 echo "<p class='error'>Accès refusé: email ou mot de passe incorrect</p>";
                 echo'<a href="index.php"> Retour</a>';
