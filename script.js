@@ -91,22 +91,7 @@ function renderCalendar() {
     renderCourses();  // Mise à jour de la liste des courses
 }
 
-// Afficher la liste des courses
-function renderCourses() {
-    const listCoursesContainer = document.querySelector(".list-courses ul");
-    listCoursesContainer.innerHTML = ""; // Effacer la liste existante
 
-    const filteredCourses = courses.filter(course => {
-        const courseDate = new Date(course.date);
-        return courseDate.getMonth() === currentMonth && courseDate.getFullYear() === currentYear;
-    });
-
-    filteredCourses.forEach(course => {
-        const li = document.createElement('li');
-        li.innerHTML = `<span class="date">${formatDate(course.date)}</span> - ${course.title}`;
-        listCoursesContainer.appendChild(li);
-    });
-}
 
 // Formater la date en jour mois
 function formatDate(dateString) {
