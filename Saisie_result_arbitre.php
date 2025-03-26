@@ -108,13 +108,7 @@
     <h1>Pénalités</h1>
     
     <form method="POST" action="">
-        <label for="Distance">Distance :</label>
-        <select name="distance" id="Distance" required>
-            <option value="100m">100m</option>
-            <option value="400m">400m</option>
-            <option value="1000m">1000m</option>
-        </select>
-
+    
         <label for="numero">Numéro coureur :</label>
         <input type="number" name="numero" required />
 
